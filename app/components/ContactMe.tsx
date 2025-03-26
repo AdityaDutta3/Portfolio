@@ -17,7 +17,7 @@ const ContactMe = () => {
     const { name, email, subject, message } = formData;
 
     // Construct the mailto URL
-    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    const mailtoUrl = `mailto:duttaaditya890@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
       `Name: ${name}\n\nMessage: ${message}`
     )}`;
 
@@ -57,23 +57,6 @@ const ContactMe = () => {
                 placeholder="Enter your name"
               />
             </div>
-
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-left text-gray-700 text-lg font-medium"
-              >
-                Your Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                {...register("email", { required: true })}
-                className="w-full p-3 mt-2 bg-gray-100 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your email"
-              />
-            </div>
-
             <div>
               <label
                 htmlFor="subject"
