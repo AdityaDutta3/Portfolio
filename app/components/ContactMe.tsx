@@ -11,44 +11,21 @@ type Inputs = {
 };
 
 const ContactMe = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false); // Add state for success
-  const [submitError, setSubmitError] = useState<string | null>(null); // Add state for error
-
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
-    setIsSubmitting(true);
-    setSubmitSuccess(false);  // Reset success state before submission
-    setSubmitError(null);  // Reset error state before submission
+    const { name, email, subject, message } = formData;
 
-    fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setSubmitSuccess(true);  // Set success state to true on success
-        reset();  // Reset the form
-        toast("Email Sent!: Your message has been sent successfully.");
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-        setSubmitError("Uh oh! Something went wrong. There was a problem with your request.");
-        toast("Uh oh! Something went wrong. Please try again.");
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    // Construct the mailto URL
+    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      `Name: ${name}\n\nMessage: ${message}`
+    )}`;
+
+    // Open the user's default email client
+    window.location.href = mailtoUrl;
+
+    // Reset the form
+    reset();
   };
 
   return (
@@ -128,23 +105,12 @@ const ContactMe = () => {
               ></textarea>
             </div>
 
-            {/* Display Success or Error Message */}
-            {submitSuccess && (
-              <p className="text-green-600 text-center">
-                Your message has been sent successfully!
-              </p>
-            )}
-            {submitError && (
-              <p className="text-red-600 text-center">{submitError}</p>
-            )}
-
             <div className="text-center">
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-3 mt-4 bg-black text-white text-lg font-semibold rounded-lg hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className="w-full py-3 mt-4 bg-black text-white text-lg font-semibold rounded-lg hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
+                Send Message
               </button>
             </div>
           </form>
