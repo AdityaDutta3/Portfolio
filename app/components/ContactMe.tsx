@@ -142,9 +142,7 @@ const ContactMe = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full py-3 mt-4 ${
-                  isSubmitting ? "bg-gray-400" : "bg-blue-600"
-                } text-white text-lg font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                className={`w-full py-3 mt-4 bg-black text-white text-lg font-semibold rounded-lg hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-500`}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
