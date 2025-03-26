@@ -35,6 +35,7 @@ export async function POST(req: Request) {
       );
     })
     .catch((error: nodemailer.SentMessageInfo) => {
+      console.log(error)
       return NextResponse.json(
         { error: true, emailSent: false, errors: [error] },
         { status: 500 }
