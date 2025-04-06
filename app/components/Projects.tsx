@@ -10,6 +10,7 @@ const projects = [
     image: "/GigJet.png",
     gitLink: "https://www.youtube.com/watch?v=M1adKEKeFLo&t=2s",
     technologies: ["React Native", "Firebase", "Tailwind CSS", "Figma"],
+    buttonName: "Watch Video"
   },
   {
     title: "ED-VOICE.AI",
@@ -26,6 +27,7 @@ const projects = [
       "OpenRouter.ai",
       "Convex",
     ],
+    buttonName: "Live Demo"
   },
   {
     title: "BlackJacks",
@@ -35,6 +37,7 @@ const projects = [
     image: "/BlackJacks.webp",
     gitLink: "https://github.com/AdityaDutta3/Blackjacks/tree/master/src/blackjacks",
     technologies: ["Java"],
+    buttonName: "Github"
   },
   {
     title: "CacheFlux",
@@ -45,6 +48,7 @@ const projects = [
     image: "/CacheFlux.png",
     gitLink: "https://github.com/AdityaDutta3/RedisAPI",
     technologies: ["Hono","Next.js","Redis"],
+    buttonName: "Github"
   },
 ];
 
@@ -80,7 +84,7 @@ const Projects = () => {
                 <div className="absolute bottom-4 left-4 right-4">
                   <Link href={project.gitLink} passHref>
                     <button className="w-full bg-black text-white p-3 rounded-xl text-lg font-semibold hover:bg-gray-800 transition-all duration-300">
-                      {project.title === "GigJet" || "ED-VOICE.AI"? "Live Demo" : "GitHub"}
+                      {project.buttonName}
                     </button>
                   </Link>
                 </div>
