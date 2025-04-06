@@ -17,7 +17,7 @@ const projects = [
       "ED-VOICE.AI is an AI-powered platform for mock interviews, Q&A practice, and personalized feedback." +
       " It helps users prepare for interviews by offering realistic simulations and detailed performance reviews to boost confidence and improve skills.",
     image: "/Ed-Voice.png",
-    gitLink: "https://github.com/AdityaDutta3/Ed-Voice.AI",
+    gitLink: "https://ed-voice-ai-5tsn.vercel.app/",
     technologies: [
       "Next.js",
       "AssemblyAI",
@@ -80,7 +80,7 @@ const Projects = () => {
                 <div className="absolute bottom-4 left-4 right-4">
                   <Link href={project.gitLink} passHref>
                     <button className="w-full bg-black text-white p-3 rounded-xl text-lg font-semibold hover:bg-gray-800 transition-all duration-300">
-                      {project.title === "GigJet" ? "Watch Video" : "GitHub"}
+                      {project.title === "GigJet" || "ED-VOICE.AI"? "Live Demo" : "GitHub"}
                     </button>
                   </Link>
                 </div>
